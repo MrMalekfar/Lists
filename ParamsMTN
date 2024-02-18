@@ -1,0 +1,8 @@
+{
+    "remoteDNS": "https://dns.google/dns-query",
+    "localDNS": "1.1.1.1",
+    "lengthMin": 250,
+    "lengthMax": 300,
+    "intervalMin": 15,
+    "intervalMax": 30
+}
