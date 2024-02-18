@@ -4,5 +4,6 @@
     "lengthMin": 10,
     "lengthMax": 20,
     "intervalMin": 1,
-    "intervalMax": 3
+    "intervalMax": 3,
+    "tcpKeepAliveIdle":100
 }
