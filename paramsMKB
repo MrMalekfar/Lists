@@ -4,7 +4,7 @@
     "packets": "1-1",
     "lengthMin": 10,
     "lengthMax": 20,
-    "intervalMin": 1,
-    "intervalMax": 3,
+    "intervalMin": 3,
+    "intervalMax": 5,
     "tcpKeepAliveIdle":100
 }
