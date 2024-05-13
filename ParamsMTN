@@ -2,9 +2,9 @@
     "remoteDNS": "https://dns.google/dns-query",
     "localDNS": "1.1.1.1",
     "packets": "tlshello",
-    "lengthMin": 250,
-    "lengthMax": 300,
-    "intervalMin": 15,
-    "intervalMax": 30,
+    "lengthMin": 10,
+    "lengthMax": 30,
+    "intervalMin": 10,
+    "intervalMax": 20,
     "tcpKeepAliveIdle": 200
 }
