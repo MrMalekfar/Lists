@@ -3,8 +3,8 @@
     "localDNS": "1.1.1.1",
     "packets": "tlshello",
     "lengthMin": 10,
-    "lengthMax": 30,
-    "intervalMin": 3,
-    "intervalMax": 5,
+    "lengthMax": 20,
+    "intervalMin": 10,
+    "intervalMax": 20,
     "tcpKeepAliveIdle":100
 }
