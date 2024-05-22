@@ -1,9 +1,9 @@
 {
-"MCI": 8,
-"MTN": 8,
-"MKH": 8,
-"MCIfrag": 8,
-"MTNfrag": 8,
-"MKHfrag": 8,
-"NTLS": 3
+    "MCI": 8,
+    "MTN": 8,
+    "MKH": 8,
+    "MCIfrag": 8,
+    "MTNfrag": 8,
+    "MKHfrag": 8,
+    "NTLS": 3
 }
