@@ -1,8 +1,8 @@
-# merge_lists.py
 import os
+import json
 
 def merge_lists():
-    # List of files to merge
+    # List of files to process (update paths if needed)
     files_to_merge = [
         'ipv4MTN',
         'ipv4MCI',
@@ -12,34 +12,41 @@ def merge_lists():
         'ipv6'
     ]
     
-    # Set to store unique lines
+    # Dictionary to hold all lists
+    data = {}
+    
+    # Set to collect unique entries for the merged list
     merged_set = set()
     
-    # Read each file and add lines to the set
+    # Process each file
     for file_name in files_to_merge:
-        try:
-            with open(file_name, 'r', encoding='utf-8') as file:
-                lines = file.readlines()
-                # Remove whitespace and add non-empty lines to set
-                for line in lines:
-                    line = line.strip()
-                    if line:  # Ignore empty lines
-                        merged_set.add(line)
-        except FileNotFoundError:
+        if os.path.exists(file_name):
+            try:
+                with open(file_name, 'r', encoding='utf-8') as file:
+                    # Read non-empty lines into a list
+                    lines = [line.strip() for line in file if line.strip()]
+                    # Use the file name without extension as the key
+                    base_name = os.path.splitext(file_name)[0]
+                    data[base_name] = lines
+                    # Add to merged set
+                    merged_set.update(lines)
+                    print(f"Processed {file_name} with {len(lines)} entries")
+            except Exception as e:
+                print(f"Error reading {file_name}: {e}")
+        else:
             print(f"Warning: {file_name} not found, skipping.")
-        except Exception as e:
-            print(f"Error reading {file_name}: {e}")
     
-    # Sort the merged list for consistency
-    merged_list = sorted(merged_set)
+    # Add the merged list (deduplicated and sorted)
+    data["merged"] = sorted(merged_set)
     
-    # Write the merged list to a new file
-    output_file = 'merged_list.txt'
-    with open(output_file, 'w', encoding='utf-8') as file:
-        for line in merged_list:
-            file.write(line + '\n')
+    # Write to JSON file
+    with open('merged_lists.json', 'w', encoding='utf-8') as file:
+        json.dump(data, file, indent=4)
     
-    print(f"Merged list written to {output_file} with {len(merged_list)} unique lines.")
+    # Summary
+    print("\nSummary:")
+    for key, value in data.items():
+        print(f"{key}: {len(value)} entries")
 
 if __name__ == "__main__":
     merge_lists()
