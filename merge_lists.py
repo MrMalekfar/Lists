@@ -6,7 +6,7 @@ def merge_lists():
     files_to_merge = [
         'ipv4MTN.txt',
         'ipv4MCI.txt',
-        'ipv4TBZ.txt',
+        'ipv4TZ.txt',
         'CFDNS.txt',
         'frag.txt',
         'ipv6.txt'
