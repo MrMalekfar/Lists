@@ -2,11 +2,11 @@ name: Merge Lists
 
 on:
   schedule:
-    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+    - cron: '0 0 * * *'  # Daily at midnight UTC
   push:
     branches:
-      - main  # Runs when files are pushed to the main branch
-  workflow_dispatch:  # Allows manual triggering
+      - main
+  workflow_dispatch:
 
 jobs:
   merge-lists:
@@ -28,8 +28,8 @@ jobs:
       run: |
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'
-        git add merged_list.txt
-        git diff --staged --quiet || git commit -m "Update merged_list.txt"
+        git add merged_lists.json
+        git diff --staged --quiet || git commit -m "Update merged_lists.json"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
