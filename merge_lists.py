@@ -4,12 +4,12 @@ import os
 def merge_lists():
     # List of files to merge
     files_to_merge = [
-        'ipv4MTN.txt',
-        'ipv4MCI.txt',
-        'ipv4TZ.txt',
-        'CFDNS.txt',
-        'frag.txt',
-        'ipv6.txt'
+        'ipv4MTN',
+        'ipv4MCI',
+        'ipv4TZ',
+        'CFDNS',
+        'frag',
+        'ipv6'
     ]
     
     # Set to store unique lines
