@@ -7,7 +7,7 @@ def merge_lists():
         'ipv4MTN.txt',
         'ipv4MCI.txt',
         'ipv4TBZ.txt',
-        'cfdns.txt',
+        'CFDNS.txt',
         'frag.txt',
         'ipv6.txt'
     ]
