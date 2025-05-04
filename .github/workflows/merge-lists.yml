@@ -1,0 +1,35 @@
+name: Merge Lists
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # Runs daily at midnight UTC
+  push:
+    branches:
+      - main  # Runs when files are pushed to the main branch
+  workflow_dispatch:  # Allows manual triggering
+
+jobs:
+  merge-lists:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.x'
+
+    - name: Run merge script
+      run: python merge_lists.py
+
+    - name: Commit and push changes
+      run: |
+        git config --global user.name 'GitHub Action'
+        git config --global user.email 'action@github.com'
+        git add merged_list.txt
+        git diff --staged --quiet || git commit -m "Update merged_list.txt"
+        git push
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
