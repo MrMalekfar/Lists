@@ -1,0 +1,11 @@
+{
+    "remoteDNS_MTN": "https://dns.google/dns-query",
+    "localDNS_MTN": "1.1.1.1",
+    "packets_MTN": "tlshello",
+    "lengthMin_MTN": 10,
+    "lengthMax_MTN": 30,
+    "intervalMin_MTN": 10,
+    "intervalMax_MTN": 20,
+
+    "tcpKeepAliveIdle": 200
+}
