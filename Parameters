@@ -11,6 +11,10 @@
     "lengthMax_MCI": 20,
     "intervalMin_MCI": 10,
     "intervalMax_MCI": 20,
-
+    "packets_MKH": "tlshello",
+    "lengthMin_MKH": 10,
+    "lengthMax_MKH": 20,
+    "intervalMin_MKH": 10,
+    "intervalMax_MKH": 20,
     "tcpKeepAliveIdle": 200
 }
