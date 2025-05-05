@@ -1,4 +1,4 @@
-name: Merge Lists
+name: Update WP and Merge Lists
 
 on:
   schedule:
@@ -9,7 +9,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  merge-lists:
+  update-and-merge:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,15 +21,21 @@ jobs:
       with:
         python-version: '3.x'
 
-    - name: Run merge script
+    - name: Install dependencies
+      run: pip install requests
+
+    - name: Run update WP script
+      run: python update_wp.py
+
+    - name: Run merge lists script
       run: python merge_lists.py
 
     - name: Commit and push changes
       run: |
         git config --global user.name 'GitHub Action'
         git config --global user.email 'action@github.com'
-        git add merged_lists.json
-        git diff --staged --quiet || git commit -m "Update merged_lists.json"
+        git add wp.txt merged_lists.json
+        git diff --staged --quiet || git commit -m "Update wp.txt and merged_lists.json"
         git push
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
