@@ -10,7 +10,7 @@ def merge_lists():
         'CFDNS',
         'frag',
         'ipv6',
-        'wp'
+        'WP'
     ]
         # Dictionary to store data
     data = {}
