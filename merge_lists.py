@@ -10,7 +10,7 @@ def merge_lists():
         'CFDNS',
         'frag',
         'ipv6',
-        'WP'
+        'wp.txt'
     ]
         # Dictionary to store data
     data = {}
@@ -28,7 +28,7 @@ def merge_lists():
                     key = os.path.splitext(file_name)[0]
                     data[key] = entries
                     # Add to merged set only if not wp
-                    if key != 'WP':
+                    if key != 'wp.txt':
                         merged_set.update(entries)
                     print(f"Processed {file_name} with {len(entries)} entries")
             except Exception as e:
