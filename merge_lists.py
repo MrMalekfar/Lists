@@ -11,24 +11,27 @@ def merge_lists():
         'frag',
         'ipv6'
     ]
-    
-    # Dictionary to store data
+        # Dictionary to store data
     data = {}
-    # Set for unique merged entries
+    # Set for unique merged entries (excluding wp)
     merged_set = set()
     
     # Process each file
     for file_name in files_to_merge:
         if os.path.exists(file_name):
-            with open(file_name, 'r', encoding='utf-8') as file:
-                content = file.read().strip()
-                # Split by commas or newlines, and clean each entry
-                entries = [entry.strip().strip('"').strip(',') for entry in content.replace('\n', ',').split(',') if entry.strip()]
-                # Use file name (without extension) as key
-                key = os.path.splitext(file_name)[0]
-                data[key] = entries
-                # Add to merged set for deduplication
-                merged_set.update(entries)
+            try:
+                with open(file_name, 'r', encoding='utf-8') as file:
+                    # Read and clean entries
+                    entries = [entry.strip().strip('"').strip(',') for entry in file.read().replace('\n', ',').split(',') if entry.strip()]
+                    # Use file name (without extension) as key
+                    key = os.path.splitext(file_name)[0]
+                    data[key] = entries
+                    # Add to merged set only if not wp
+                    if key != 'wp':
+                        merged_set.update(entries)
+                    print(f"Processed {file_name} with {len(entries)} entries")
+            except Exception as e:
+                print(f"Error reading {file_name}: {e}")
         else:
             print(f"Warning: {file_name} not found, skipping.")
     
