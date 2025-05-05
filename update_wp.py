@@ -8,14 +8,18 @@ def update_wp_file():
     
     try:
         # Fetch the JSON file
-        response = requests.get(ip_json_url)
+        response = requests.get(ip_json_url, timeout=10)
         response.raise_for_status()  # Raise an error for bad status codes
         
         # Parse JSON
         data = response.json()
         
-        # Extract IP:port pairs
-        wp_entries = [entry["ip"] for entry in data if "ip" in entry and isinstance(entry["ip"], str)]
+        # Extract ipv4 and ipv6 lists
+        ipv4_entries = data.get("ipv4", [])
+        ipv6_entries = data.get("ipv6", [])
+        
+        # Combine and validate entries
+        wp_entries = [str(entry).strip() for entry in (ipv4_entries + ipv6_entries) if entry.strip()]
         
         if not wp_entries:
             print("Warning: No valid IP:port entries found in ip.json")
