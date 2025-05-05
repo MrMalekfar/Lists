@@ -9,7 +9,8 @@ def merge_lists():
         'ipv4TZ',
         'CFDNS',
         'frag',
-        'ipv6'
+        'ipv6',
+        'wp'
     ]
         # Dictionary to store data
     data = {}
