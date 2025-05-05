@@ -19,8 +19,8 @@ def update_wp_file():
         ipv6_entries = data.get("ipv6", [])
         
         # Combine and validate entries
-        wp_entries = [str(entry).strip() for entry in (ipv4_entries + ipv6_entries) if entry.strip()]
-        
+       # wp_entries = [str(entry).strip() for entry in (ipv4_entries + ipv6_entries) if entry.strip()]
+        wp_entries = [str(entry).strip() for entry in (ipv4_entries) if entry.strip()]
         if not wp_entries:
             print("Warning: No valid IP:port entries found in ip.json")
             return
